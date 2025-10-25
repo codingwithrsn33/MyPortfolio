@@ -1,0 +1,223 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rohan Darekar | Python Developer</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f0f2f5;
+            margin: 0;
+            scroll-behavior: smooth;
+        }
+
+        /* Navbar */
+        .navbar {
+            transition: all 0.3s;
+        }
+        .navbar.sticky {
+            background-color: rgba(0,0,0,0.9) !important;
+        }
+
+        /* Hero Section */
+        .hero-section {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(to right, #667eea, #764ba2);
+            color: #fff;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: url("{% static 'images/hero-bg.png' %}") no-repeat center center/cover;
+            opacity: 0.05;
+            z-index: 0;
+        }
+        .hero-content { position: relative; z-index: 1; }
+        .hero-text h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            background: linear-gradient(90deg, #ffdd59, #ffc107);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .hero-text h2 { font-size: 2rem; font-weight: 500; margin-bottom: 20px; color: #fff; }
+        .hero-text p { font-size: 1.1rem; line-height: 1.8; margin-bottom: 25px; color: #e0e0e0; }
+
+        .skills span {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.2);
+            color: #fff;
+            padding: 8px 20px;
+            margin: 5px 5px 5px 0;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            transition: 0.3s;
+        }
+        .skills span:hover { background: #ffdd59; color: #222; }
+
+        .btn-resume {
+            background: #ffdd59;
+            color: #222;
+            font-weight: 600;
+            border-radius: 50px;
+            padding: 12px 35px;
+            transition: all 0.3s ease;
+        }
+        .btn-resume:hover { background: #ffc107; transform: translateY(-3px); color: #000; }
+
+        .hero-image img {
+            width: 100%;
+            max-width: 420px;
+            border-radius: 20px;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.4);
+            animation: float 6s ease-in-out infinite;
+            transition: transform 0.3s;
+        }
+        .hero-image img:hover { transform: scale(1.05) rotate(-2deg); }
+        @keyframes float { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(-20px); } }
+
+        .social-links a { font-size: 28px; color: #fff; margin-right: 20px; transition: 0.3s; }
+        .social-links a:hover { color: #ffdd59; transform: translateY(-3px); }
+
+        .scroll-down {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 1.2rem;
+            color: #fff;
+            animation: bounce 2s infinite;
+        }
+        @keyframes bounce { 0%,100% { transform: translateX(-50%) translateY(0); } 50% { transform: translateX(-50%) translateY(-10px); } }
+
+        /* Skills Section */
+        #skills { padding: 5rem 0; text-align: center; }
+        #skills h2 { font-size: 2.5rem; margin-bottom: 2rem; color: #333; }
+        #skills .skill-badge { display: inline-block; margin: 5px; padding: 10px 20px; background: #764ba2; color: #fff; border-radius: 50px; font-weight: 500; transition: 0.3s; }
+        #skills .skill-badge:hover { background: #ffdd59; color: #222; }
+
+        @media (max-width: 992px) {
+            .hero-text h1 { font-size: 2.8rem; }
+            .hero-text h2 { font-size: 1.6rem; }
+            .hero-image img { max-width: 320px; margin: 0 auto; }
+        }
+        @media (max-width: 576px) {
+            .hero-text h1 { font-size: 2.2rem; }
+            .hero-text h2 { font-size: 1.3rem; }
+            .skills span { padding: 6px 14px; font-size: 0.8rem; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+    <div class="container">
+        <a class="navbar-brand" href="{% url 'home' %}">Rohan Darekar</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link active" href="{% url 'home' %}">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="{% url 'education' %}">Education</a></li>
+        <li class="nav-item"><a class="nav-link" href="{% url 'aboutme' %}">About-Me</a></li>
+        <li class="nav-item"><a class="nav-link" href="{% url 'contact' %}">Contact</a></li>
+
+    </ul>
+</div>
+
+    </div>
+</nav>
+
+<!-- Hero Section -->
+<section class="hero-section d-flex align-items-center">
+    <div class="container hero-content">
+        <div class="row align-items-center">
+            <div class="col-lg-6 hero-text text-center text-lg-start">
+                <h1>Rohan Darekar</h1>
+                <h2>Python Developer</h2>
+                <p>
+                    Passionate Python Developer specializing in Django, DRF, SQL, MongoDB, AWS, Docker, REST API, and React JS.
+                    I build scalable, efficient web applications that solve real-world problems.
+                </p>
+
+                <!-- Skills -->
+                <div class="skills mb-3">
+                    {% for skill in skills %}
+                        <span>{{ skill }}</span>
+                    {% endfor %}
+                </div>
+
+                <!-- Download Resume -->
+                <a href="{% static 'resume/Rohan_Darekar_Python_Developer_Resume.pdf' %}" download class="btn-resume mb-4 d-inline-block">
+                    <i class="fa fa-download"></i> Download Resume
+                </a>
+
+                <!-- Social Links -->
+                <div class="social-links">
+                    <a href="https://www.linkedin.com/in/rohan-darekar-a865682a5/" target="_blank"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://github.com/codingwithrsn33" target="_blank"><i class="fab fa-github"></i></a>
+                    <a href="mailto:rohandarekar307@gmail.com"><i class="fa fa-envelope"></i></a>
+                </div>
+            </div>
+
+            <div class="col-lg-6 hero-image text-center mt-5 mt-lg-0">
+                <img src="{% static 'images/rohan.jpg' %}" alt="Rohan Darekar Photo">
+            </div>
+        </div>
+    </div>
+
+    <!-- Scroll Indicator -->
+    <div class="scroll-down"><i class="fa fa-chevron-down"></i></div>
+</section>
+
+<!-- Skills Section -->
+<section id="skills">
+    <div class="container">
+        <h2>My Skills</h2>
+        {% for skill in skills %}
+            <span class="skill-badge">{{ skill }}</span>
+        {% endfor %}
+    </div>
+</section>
+
+<!-- Bootstrap JS Bundle -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- Optional: Smooth navbar background change on scroll -->
+<script>
+    window.addEventListener('scroll', function() {
+        const navbar = document.querySelector('.navbar');
+        if(window.scrollY > 50) {
+            navbar.classList.add('sticky');
+        } else {
+            navbar.classList.remove('sticky');
+        }
+    });
+</script>
+
+</body>
+</html>
