@@ -23,9 +23,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-mu7x8%8_ac20hqtd%dz4bila-@_smxd#drr8tc3w+6q5h(=32-'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['rohandarekar.pythonanywhere.com']
 
 
 # Application definition
@@ -115,8 +115,18 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
 
+import os
+
+# Static files (CSS, JavaScript, Images)
 STATIC_URL = '/static/'
-STATICFILES_DIRS = [BASE_DIR / "sitecore" / "static"]
+
+# Folder where collectstatic will copy all static files
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+# Optional: extra static locations
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static'),  # your current static folder
+]
 
 
 # Default primary key field type
