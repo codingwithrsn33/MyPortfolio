@@ -1,6 +1,8 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from .forms import ContactForm
+from django.core.mail import send_mail   # ✅ add this line
+from django.conf import settings
 
 def home(request):
     skills = [
@@ -119,14 +121,8 @@ def aboutme(request):
         'certifications_list': certifications_list,
         'achievements': achievements
     })
+ 
 def contact(request):
-    if request.method == "POST":
-        form = ContactForm(request.POST)
-        if form.is_valid():
-            form.save()
-            messages.success(request, "Thank you for contacting me! I’ll get back to you soon.")
-            return redirect('contact')
-    else:
-        form = ContactForm()
+    return render(request, 'sitecore/contact.html')
 
-    return render(request, 'sitecore/contact.html', {'form': form})
+
