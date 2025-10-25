@@ -8,7 +8,7 @@ SECRET_KEY = 'django-insecure-mu7x8%8_ac20hqtd%dz4bila-@_smxd#drr8tc3w+6q5h(=32-
 DEBUG = False
 
 # Add your Render URL
-ALLOWED_HOSTS = ['myportfolio-2-pgxz.onrender.com', 'localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['*']
 
 INSTALLED_APPS = [
     'django.contrib.admin',
